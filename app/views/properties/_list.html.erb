@@ -1,0 +1,19 @@
+<% properties.each do |property|%>
+  <div class="col-4 mb-3">
+    <div class="property border">
+
+        <div class="property-thumb" style="background-image:url('<%=rails_blob_url(property.cover_picture)%>')">
+          <%= link_to "", property_path(property)%>
+        </div>
+
+        <div class="property-summary mb-2 p-3">
+          <h3 class="h5 text-uppercase"><%=property.tipoOp%>-<%=property.tipoProp%></h3>
+
+          <span class="mr-2"><i class="fas fa-bed"></i><%= property.recamaras %></span>
+          <span class="mr-2"><i class="fas fa-toilet"></i><%= property.banos %></span>
+          <span><i class="fas fa-home"></i><%= property.mConst %> </span>
+          <p class="mt-2"><%=number_to_currency(property.precio,precision: 0)%></p>
+        </div>
+    </div>
+  </div>
+<%end%>
