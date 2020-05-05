@@ -1,28 +1,48 @@
 class PropertiesController < ApplicationController
   require 'mini_magick'
   before_action :set_property, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_account!,only: [:new,:create,:destroy]
-  before_action :set_sidebar, except: [:show]
+  before_action :authenticate_account!,only: [:new,:create,:destroy,:index,:featured]
+  before_action :set_sidebar, except: [:show,:search,:showpdf]
+  before_action :set_none, only: [:showpdf]
   # GET /properties
   # GET /properties.json
   def index
     @properties = Property.all
+
+    # @mine = Property.where(account: Account.find(params[:id]))
+    # @featured_properties= Property.featured
+  end
+
+  def featured
+    @properties = Property.where(id: params[:ids]).update_all(:featured => true)
+    @actuales = Property.where(featured: true)
+    @todas = Property.all
+  end
+
+  def search
+    @properties = Property.where(nil)
+    filtering_params(params).each do |key, value|
+      @properties = @properties.public_send("filter_by_#{key}", value) if value.present?
+    end
+    # @properties = Property.where("colonia LIKE ?",params[:colonia])
   end
 
   # GET /properties/1
   # GET /properties/1.json
   def show
     @agent = @property.account
-    @neighbourhood = Property.where(colonia: @property.colonia).where.not(id: @property)
+    @neighbourhood = Property.where(colonia: @property.colonia).where.not(id: @property).limit(3)
   end
 
   # GET /properties/new
   def new
+    @asesores = Account.all.pluck(:first_name,:id)
     @property = Property.new
   end
 
   # GET /properties/1/edit
   def edit
+
   end
 
   # POST /properties
@@ -33,7 +53,11 @@ class PropertiesController < ApplicationController
       mini_image = MiniMagick::Image.new(params[:property][:cover_picture].tempfile.path)
       mini_image.resize '1200x1200'
     # end
-    @property.account_id = current_account.id
+    # params[:property][:pictures].each do |image|
+    #   mini_image = MiniMagick::Image.new(params[:property][image].tempfile.path)
+    #   mini_image.resize '1200x1200'
+    # end
+    # @property.account_id = current_account.id
 
     respond_to do |format|
       if @property.save
@@ -72,17 +96,26 @@ class PropertiesController < ApplicationController
 
   private
 
+    def filtering_params(params)
+      params.slice(:colonia,:zona,:tipoOp,:tipoProp)
+    end
+
+    def set_none
+      @show_none = true
+    end
+
+    def set_sidebar
+      @show_sidebar = true
+    end
+
 
     # Use callbacks to share common setup or constraints between actions.
     def set_property
       @property = Property.find(params[:id])
     end
 
-    def set_sidebar
-      @show_sidebar = true
-    end
     # Only allow a list of trusted parameters through.
     def property_params
-      params.require(:property).permit(:id,:descripcion,:tipoOp,:tipoProp, :zona, :colonia, :precio, :mConst, :mTerreno, :banos, :recamaras,:cover_picture)
+      params.require(:property).permit(:id,:account_id,:featured,:descripcion,:tipoOp,:tipoProp, :zona, :colonia, :precio, :mConst, :mTerreno, :banos,:ac,:alarm,:lift,:balcony,:furnished,:bbq,:heating,:fireplace,:backyard,:pool,:terrace,:security,:comision, :recamaras,:cover_picture,pictures: [])
     end
 end

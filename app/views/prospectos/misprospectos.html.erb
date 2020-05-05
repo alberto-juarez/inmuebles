@@ -1,0 +1,35 @@
+<% if current_account == @account or current_account.admin? %>
+  <h1>Mis Prospectos</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Tel</th>
+        <th>Estatus</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @prospectos.each do |prospecto| %>
+        <tr>
+          <td><%= prospecto.first_name %></td>
+          <td><%= prospecto.last_name %></td>
+          <td><%= prospecto.email %></td>
+          <td><%= prospecto.tel %></td>
+          <td><%= prospecto.status %></td>
+          <td><%= link_to 'Show', prospecto %></td>
+          <td><%= link_to 'Edit', edit_prospecto_path(prospecto) %></td>
+          <td><%= link_to 'Destroy', prospecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Nuevo Prospecto', new_prospecto_path, class:"btn btn-success" %>
+<%end%>

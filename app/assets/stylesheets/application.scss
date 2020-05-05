@@ -13,8 +13,8 @@
  *= require bootstrap
  *= require_tree .
  *= require_self
+ *= require trix
  */
 
- // @import "~bootstrap/scss/bootstrap";
  @import '@fortawesome/fontawesome-free/css/all.css';
  @import 'toastr/build/toastr.min';

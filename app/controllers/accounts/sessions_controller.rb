@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Accounts::SessionsController < Devise::SessionsController
+  # before_action :set_sidebar,only: [:edit]
+  # def set_sidebar
+  #   @show_sidebar = true
+  # end
 
   # GET /resource/sign_in
   # def new

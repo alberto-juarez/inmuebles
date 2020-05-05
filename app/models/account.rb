@@ -5,6 +5,7 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :validatable,:trackable
 
   has_many :properties
+  has_many :prospectos
 
   def full_name
     "#{first_name} #{last_name}"

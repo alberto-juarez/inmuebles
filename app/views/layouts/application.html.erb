@@ -9,14 +9,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
-
-  <body id="<%= controller.controller_name%>" class="<%= controller.action_name%> <%=  "show-sidebar" if @show_sidebar.present?%>">
-    <%if @show_sidebar.nil?%>
+  <body id="<%= controller.controller_name%>" class="<%= controller.action_name%> <%="show-sidebar" if @show_sidebar.present?%>">
+    <%if not @show_none.nil?%>
+      <%= yield %>
+    <%elsif @show_sidebar.nil?%>
       <header>
         <%= render "layouts/nav/public" %>
-        <%= yield %>
       </header>
-
+      <%= yield %>
     <%else%>
       <%= render "layouts/nav/dashboard" %>
       <div class="container-fluid">
@@ -32,7 +32,8 @@
     <div id="notifications"><%= flash_notifications %></div>
 
   </body>
-  <%if ["public"].include?(controller.controller_name)%>
+
+  <%if ["public"].include?(controller.controller_name) or (["properties"].include?(controller.controller_name) and ["show"].include?(controller.action_name))%>
     <%= render "layouts/footer" %>
   <%end%>
 </html>

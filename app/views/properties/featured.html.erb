@@ -1,0 +1,54 @@
+
+<% if current_account.admin? %>
+    <div class="row">
+      <h1>Featured</h1>
+    </div>
+      <div class="row">
+          <div class="col-md-12">
+
+              <ul id="tabs" class="nav nav-tabs">
+                  <li class="nav-item"><a href="" data-target="#home1" data-toggle="tab" class="nav-link small text-uppercase">Actuales</a></li>
+                  <li class="nav-item"><a href="" data-target="#profile1" data-toggle="tab" class="nav-link small text-uppercase active">Cambiar</a></li>
+              </ul>
+              <br>
+              <div id="tabsContent" class="tab-content">
+                  <div id="home1" class="tab-pane fade">
+                    <h1>hola</h1>
+                    <% @actuales.each do |property| %>
+                      <%= property.precio %>
+
+                    <%end%>
+                  </div>
+
+                  <div id="profile1" class="tab-pane fade active show">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Check</th>
+                          <th>Id</th>
+                          <th>Zona</th>
+                          <th>Colonia</th>
+                          <th>Precio</th>
+                          <th colspan="3"></th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <% @todas.each do |property| %>
+                          <tr>
+                            <td><div class="form-check"><input class="form-check-input" type="checkbox" value="<%= property.id %>" id="defaultCheck1"></div></td>
+                            <td><%= property.id %></td>
+                            <td><%= property.zona %></td>
+                            <td><%= property.colonia %></td>
+                            <td><%= number_to_currency(property.precio, locale: :en) %></td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+
+                    </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+<%end%>

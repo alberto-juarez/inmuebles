@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Propiedades</h1>
+<h1>Propiedades - Todas</h1>
 
 <table class="table table-striped">
   <thead>
@@ -13,7 +11,11 @@
       <th>Mterreno</th>
       <th>Banos</th>
       <th>Recamaras</th>
-      <th colspan="3"></th>
+      <%if current_account.admin?%>
+        <th colspan="3"></th>
+      <%else%>
+        <th colspan="1"></th>
+      <%end%>
     </tr>
   </thead>
 
@@ -23,14 +25,16 @@
         <td><%= property.id %></td>
         <td><%= property.zona %></td>
         <td><%= property.colonia %></td>
-        <td><%= property.precio %></td>
+        <td><%= number_to_currency(property.precio, locale: :en) %></td>
         <td><%= property.mConst %></td>
         <td><%= property.mTerreno %></td>
         <td><%= property.banos %></td>
         <td><%= property.recamaras %></td>
-        <td><%= link_to 'Show', property %></td>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', property %></td>
+        <%if current_account.admin?%>
+        <td><%= link_to 'Editar', edit_property_path(property) %></td>
+        <td><%= link_to 'Eliminar', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>

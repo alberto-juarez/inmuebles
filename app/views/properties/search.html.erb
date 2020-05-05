@@ -1,0 +1,32 @@
+<header>
+  <%= render "layouts/nav/public" %>
+</header>
+<body id="<%= controller.controller_name%>" class="<%= controller.action_name%>">
+
+
+  <section id="search-properties">
+    <div class="container mb-3">
+      <div class="row">
+        <h2>Busca</h2>
+      </div>
+      <%= render "layouts/busqueda" %>
+    </div>
+  </section>
+
+  <section id="search-results">
+    <div class="container">
+      <div class="row">
+        <h2>Resultados</h2>
+      </div>
+      <div class="row">
+        <%= render "properties/list",properties: @properties %>
+      </div>
+    </div>
+  </section>
+
+
+
+  <div id="notifications"><%= flash_notifications %></div>
+
+</body>
+<%= render "layouts/footer" %>

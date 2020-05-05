@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @prospecto.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @prospecto.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @prospecto.email %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @prospecto.tel %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @prospecto.status %>
+</p>
+
+<p>
+  <strong>Statuscomment:</strong>
+  <%= @prospecto.statuscomment %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @prospecto.comment %>
+</p>
+
+<%= link_to 'Edit', edit_prospecto_path(@prospecto) %> |
+<%= link_to 'Back', prospectos_path %>

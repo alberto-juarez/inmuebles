@@ -1,40 +1,33 @@
-<div class="advanced_search">
-					<h3>Search Properties for</h3>
-					<div class="search_select">
-						<select class="s_select">
-							<option value="1">Choose Locations</option>
-							<option value="2">Property Type</option>
-							<option value="4">Bedrooms</option>
-						</select>
-						<select class="s_select">
-							<option value="1">Property Type</option>
-							<option value="2">Choose Locations</option>
-							<option value="4">Bedrooms</option>
-						</select>
-						<select class="s_select">
-							<option value="1">Bedrooms</option>
-							<option value="2">Property Type</option>
-							<option value="4">Choose Locations</option>
-						</select>
-						<select class="s_select">
-							<option value="1">Bathrooms</option>
-							<option value="2">Property Type</option>
-							<option value="4">Bedrooms</option>
-						</select>
-					</div>
-					<div class="search_range">
-						<div class="range_item">
-							<h5>Price Range</h5>
-							<div id="slider-range"></div>
-							<span class="d_text">$200</span>
-							<input type="text" id="amount" readonly style="border:0;" class="amount">
-						</div>
-						<div class="range_item">
-							<h5>property Area</h5>
-							<div id="slider-range2"></div>
-							<span class="d_text2">50sqm</span>
-							<input type="text" id="amount2" readonly style="border:0;" class="amount2">
-						</div>
-					</div>
-					<button type="submit" value="submit" class="btn submit_btn">Search Property</button>
-				</div>
+<%= form_tag("/search", method: "get") do %>
+  <div class="row">
+    <div class="col-3">
+      <%= label_tag(:tipoOp, "Tipo:") %>
+      <%= select_tag(:tipoOp, options_for_select([ "Venta", "Renta" ], "Renta"), {:class => 'form-control'}) %>
+    </div>
+    <div class="col-3">
+      <%= label_tag(:tipoProp, "Tipo:") %>
+      <%= select_tag(:tipoProp, options_for_select([ "Departamento", "Casa" ], "Casa"), {:class => 'form-control'}) %>
+    </div>
+    <div class="col-3">
+      <%= label_tag(:zona, "Zona:") %>
+      <%=  select_tag(:zona, options_for_select([ "Norte", "Sur" ], "Sur"), {:class => 'form-control'}) %>
+    </div>
+    <div class="col-3">
+      <%= label_tag(:colonia, "Colonia:") %>
+      <%= select_tag(:colonia, options_for_select([ "Hola", "Contry" ], "Hola"), {:class => 'form-control'}) %>
+    </div>
+  </div>
+
+
+  <div class="row mt-3">
+    <div class="col-3">
+    </div>
+    <div class="col-3">
+    </div>
+    <div class="col-3">
+    </div>
+    <div class="col-3">
+      <%= submit_tag("Buscar",:class=>"btn btn-block btn-success") %>
+    </div>
+  </div>
+<% end %>
