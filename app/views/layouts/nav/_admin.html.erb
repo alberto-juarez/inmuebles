@@ -6,18 +6,10 @@
   <%end%>
   <!-- </a> -->
 </li>
-<li class="nav-item">
-  <%=link_to prospectos_path, class:"nav-link" do%>
-    <i class="fas fa-comment-dollar"></i>
-    Prospectos (Todos)
-  <%end%>
-</li>
-<li class="nav-item">
-  <%=link_to misprospectos_path(current_account), class:"nav-link" do%>
-    <i class="fas fa-comment-dollar"></i>
-    Prospectos
-  <%end%>
-</li>
+
+
+
+
 <li class="nav-item">
   <%=link_to dashboard_accounts_path, class:"nav-link" do%>
     <i class="fas fa-user"></i>
@@ -27,7 +19,7 @@
 <li class="nav-item">
   <%=link_to featured_path, class:"nav-link" do%>
     <i class="fas fa-star"></i>
-    Featured
+    Portada
   <%end%>
 </li>
 <li class="nav-item">
@@ -36,3 +28,39 @@
     Reportes
   <%end%>
 </li>
+
+<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+  <span>Prospectos</span>
+</h6>
+<ul class="nav flex-column mb-2">
+  <li class="nav-item">
+    <%=link_to prospectos_path, class:"nav-link" do%>
+      <i class="fas fa-comment-dollar"></i>
+      Todos
+    <%end%>
+  </li>
+  <li class="nav-item">
+    <%=link_to misprospectos_path(current_account), class:"nav-link" do%>
+      <i class="fas fa-comment-dollar"></i>
+      Mis Prospectos
+    <%end%>
+  </li>
+</ul>
+
+<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+  <span>Dueños</span>
+</h6>
+<ul class="nav flex-column mb-2">
+  <li class="nav-item">
+    <%=link_to duenos_path, class:"nav-link" do%>
+      <i class="fas fa-key"></i>
+      Todos
+    <%end%>
+  </li>
+  <li class="nav-item">
+    <%=link_to misduenos_path(current_account), class:"nav-link" do%>
+      <i class="fas fa-key"></i>
+      Mis Dueños
+    <%end%>
+  </li>
+</ul>

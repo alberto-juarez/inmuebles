@@ -1,16 +1,16 @@
 <h1>Propiedades - Todas</h1>
-
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Id</th>
+      <th>ID</th>
       <th>Zona</th>
+      <th>Operación</th>
+      <th>Tipo</th>
       <th>Colonia</th>
       <th>Precio</th>
-      <th>Mconst</th>
-      <th>Mterreno</th>
-      <th>Banos</th>
-      <th>Recamaras</th>
+      <th>M const</th>
+      <th>M terreno</th>
+      <th>Asesor</th>
       <%if current_account.admin?%>
         <th colspan="3"></th>
       <%else%>
@@ -24,12 +24,13 @@
       <tr>
         <td><%= property.id %></td>
         <td><%= property.zona %></td>
+        <td><%= property.tipoOp %></td>
+        <td><%= property.tipoProp %></td>
         <td><%= property.colonia %></td>
         <td><%= number_to_currency(property.precio, locale: :en) %></td>
         <td><%= property.mConst %></td>
         <td><%= property.mTerreno %></td>
-        <td><%= property.banos %></td>
-        <td><%= property.recamaras %></td>
+        <td><%=  @asesores[property.account_id-1]%></td>
         <td><%= link_to 'Ver', property %></td>
         <%if current_account.admin?%>
         <td><%= link_to 'Editar', edit_property_path(property) %></td>

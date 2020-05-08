@@ -1,4 +1,4 @@
-<% if current_account == @account or current_account.admin? %>
+<% if current_account == @prospecto.account or current_account.admin? %>
 <div class="container">
   <h2>Datos</h2>
   <div class="row mb-3 mt-3">
@@ -33,7 +33,7 @@
         <strong>Comentarios del estatus:</strong>
       </div>
       <div class="row">
-        <%= simple_format(@prospecto.statuscomment) %>
+        <%= @prospecto.statuscomment %>
       </div>
     </div>
     <div class="col-6">
@@ -41,7 +41,7 @@
         <strong>Comentarios del prospecto:</strong>
       </div>
       <div class="row">
-        <%= simple_format(@prospecto.comment) %>
+        <%= @prospecto.comment %>
       </div>
     </div>
   </div>

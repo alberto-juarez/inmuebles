@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :duenos
   resources :prospectos
+
   get 'pdf/:id' => "properties#showpdf"
   get "misprospectos/:id" => 'prospectos#misprospectos', as: :misprospectos
+  get "misduenos/:id" => 'duenos#misduenos', as: :misduenos
   get 'client/new'
   get 'client/create'
   devise_for :accounts
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
   get 'dashboard/clients'
   get 'dashboard/newclient'
   get "/profile/:id" => 'dashboard#profile', as: :profile
+  patch "/featured" => "properties#update_multiple"
   get "/featured" => "properties#featured"
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do

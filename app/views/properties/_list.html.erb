@@ -7,19 +7,22 @@
         </div>
 
         <div class="property-summary mb-2 p-3">
-          <h3 class="h5 text-uppercase">
+          <span class="h6 mb-1 text-uppercase">
             <%if property.tipoOp == "Renta" %>
               <%= t '.rent' %>
             <%else%>
               <%= t '.sale' %>
             <%end%>
             - <%=property.tipoProp%>
-          </h3>
+          </span>
+          <br>
+          <span class="h6"><%=number_to_currency(property.precio,precision: 0, locale: :en)%></span>
+          <br>
+          <span class="h6 mt-1 text-uppercase">
+            <%=property.zona%>
+            - <%=property.colonia%>
+          </span>
 
-          <span class="mr-2"><i class="fas fa-bed mr-1"></i><%= property.recamaras %></span>
-          <span class="mr-2"><i class="fas fa-toilet mr-1"></i><%= property.banos %></span>
-          <span><i class="fas fa-expand-arrows-alt mr-1"></i><%= property.mConst %> </span>
-          <p class="mt-2"><%=number_to_currency(property.precio,precision: 0, locale: :en)%></p>
         </div>
     </div>
   </div>

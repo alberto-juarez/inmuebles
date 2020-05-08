@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @dueno.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @dueno.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @dueno.email %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @dueno.tel %>
+</p>
+
+<p>
+  <strong>Cel:</strong>
+  <%= @dueno.cel %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @dueno.comments %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @dueno.property_id %>
+</p>
+
+<%= link_to 'Edit', edit_dueno_path(@dueno) %> |
+<%= link_to 'Back', duenos_path %>

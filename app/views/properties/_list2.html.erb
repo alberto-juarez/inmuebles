@@ -1,0 +1,26 @@
+<% properties.each_slice(3) do |props|%>
+  <div class="card-deck">
+    <% props.each do |property|%>
+      <div class="card">
+        <%= image_tag property.cover_picture, class:"card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title"><%=number_to_currency(property.precio,precision: 0, locale: :en)%></h5>
+          <p class="card-text text-uppercase">
+            <%if property.tipoOp == "Renta" %>
+              <%= t '.rent' %>
+            <%else%>
+              <%= t '.sale' %>
+            <%end%>
+            - <%=property.tipoProp%>
+            <br>
+            <%=property.zona%>
+            - <%=property.colonia%>
+          </p>
+        </div>
+        <div class="card-footer">
+          <small >Last updated 3 mins ago</small>
+        </div>
+      </div>
+    <%end%>
+  </div>
+<%end%>

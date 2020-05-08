@@ -1,5 +1,7 @@
 class Property < ApplicationRecord
   belongs_to :account
+  has_one :dueno
+  has_rich_text :descripcion
   has_one_attached :cover_picture
   has_many_attached :pictures
   scope :filter_by_colonia, -> (colonia) { where colonia: colonia }

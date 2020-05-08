@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
 .property-thumb {
   height: 180px;
   background-position: center center;
@@ -18,6 +19,13 @@
   height: 500px;
   background-size: cover;
   background-position-y: center;
+}
+video {
+    min-height: 100% !important;
+    min-width: 100% !important;
+	   height: auto !important;
+    width: auto !important;
+	   overflow: hidden;
 }
 
 .carousel-item {

@@ -7,14 +7,29 @@ class PropertiesController < ApplicationController
   # GET /properties
   # GET /properties.json
   def index
+    @featured = Property.where(featured: true)
+    @asesores = Account.all.pluck(:first_name)
     @properties = Property.all
 
     # @mine = Property.where(account: Account.find(params[:id]))
     # @featured_properties= Property.featured
   end
 
+  def update_multiple
+    Property.where(id: params[:ids]).update_all(featured: true)
+    Property.where.not(id: params[:ids]).update_all(featured: false)
+  # Property.update_all([:featured => true], :id => params[:ids])
+   # @properties = Property.where(id: params[:coleccion]).update_all(:featured => true)
+   # @properties.each do |property|
+   #   property.update_attributes!(params[:coleccion].reject { |k,v| v.blank? })
+   # end
+   # flash[:notice] = "Updated products!"
+   redirect_to featured_path
+  end
+
   def featured
-    @properties = Property.where(id: params[:ids]).update_all(:featured => true)
+    @properties = Property.all
+    @properties = Property.where(id: params[:coleccion]).update_all(:featured => true)
     @actuales = Property.where(featured: true)
     @todas = Property.all
   end
@@ -36,12 +51,15 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
+    @duenos = Dueno.all.pluck(:first_name,:id)
     @asesores = Account.all.pluck(:first_name,:id)
     @property = Property.new
   end
 
   # GET /properties/1/edit
   def edit
+    @duenos = Dueno.all.pluck(:first_name,:id)
+    @asesores = Account.all.pluck(:first_name,:id)
 
   end
 
@@ -116,6 +134,6 @@ class PropertiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def property_params
-      params.require(:property).permit(:id,:account_id,:featured,:descripcion,:tipoOp,:tipoProp, :zona, :colonia, :precio, :mConst, :mTerreno, :banos,:ac,:alarm,:lift,:balcony,:furnished,:bbq,:heating,:fireplace,:backyard,:pool,:terrace,:security,:comision, :recamaras,:cover_picture,pictures: [])
+      params.require(:property).permit(:id,:account_id,:featured,:comision,:duenos_id,:descripcion,:tipoOp,:tipoProp, :zona, :colonia, :precio, :mConst, :mTerreno, :banos,:ac,:alarm,:lift,:balcony,:furnished,:bbq,:heating,:fireplace,:backyard,:pool,:terrace,:security,:comision, :recamaras,:cover_picture,pictures: [],ids: [])
     end
 end

@@ -5,11 +5,13 @@ class ProspectosController < ApplicationController
   # GET /prospectos
   # GET /prospectos.json
   def index
+    @asesores = Account.all.pluck(:first_name)
     @prospectos = Prospecto.all
   end
 
   def misprospectos
-    @prospectos = Prospecto.where(:account => params[:id])
+    @account = Account.find(params[:id])
+    @prospectos = Prospecto.where(:account_id => params[:id])
   end
 
   # GET /prospectos/1
@@ -25,6 +27,7 @@ class ProspectosController < ApplicationController
 
   # GET /prospectos/1/edit
   def edit
+    @asesores = Account.all.pluck(:first_name,:id)
   end
 
   # POST /prospectos
@@ -78,6 +81,6 @@ class ProspectosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def prospecto_params
-      params.require(:prospecto).permit(:first_name, :last_name, :email, :tel, :status, :statuscomment, :comment,:account_id)
+      params.require(:prospecto).permit(:first_name, :last_name, :email, :tel, :status, :statuscomment, :comment,:account_id,:duenos_id)
     end
 end

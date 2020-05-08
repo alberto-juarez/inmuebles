@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_002100) do
+ActiveRecord::Schema.define(version: 2020_05_06_215213) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name", default: "", null: false
@@ -80,6 +80,19 @@ ActiveRecord::Schema.define(version: 2020_05_05_002100) do
     t.index ["account_id"], name: "index_clients_on_account_id"
   end
 
+  create_table "duenos", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "tel"
+    t.string "cel"
+    t.string "comments"
+    t.integer "property_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_duenos_on_property_id"
+  end
+
   create_table "featureds", force: :cascade do |t|
     t.boolean "show"
     t.datetime "created_at", precision: 6, null: false
@@ -120,7 +133,9 @@ ActiveRecord::Schema.define(version: 2020_05_05_002100) do
     t.boolean "security"
     t.decimal "comision"
     t.boolean "featured", default: false
+    t.integer "duenos_id"
     t.index ["account_id"], name: "index_properties_on_account_id"
+    t.index ["duenos_id"], name: "index_properties_on_duenos_id"
   end
 
   create_table "prospectos", force: :cascade do |t|
