@@ -2,6 +2,11 @@ class DashboardController < ApplicationController
   before_action :set_sidebar
   before_action :authenticate_account!
   def index
+    @mensajes = Message.where(:visible => true)
+    @asesores = Account.all.pluck(:first_name)
+    @total = Property.all.count
+    @venta = Property.where(:tipoOp => "Venta").count
+    @renta = Property.where(:tipoOp => "Renta").count
   end
 
   def newclient
@@ -17,12 +22,6 @@ class DashboardController < ApplicationController
 
   def accounts
     @accounts = Account.all
-  end
-
-  def reports
-    @total = Property.all.count
-    @venta = Property.where(:tipoOp => "Venta").count
-    @renta = Property.where(:tipoOp => "Renta").count
   end
 
   def profile

@@ -9,15 +9,20 @@
         <div class="property-summary mb-2 p-3">
           <span class="h6 mb-1 text-uppercase">
             <%if property.tipoOp == "Renta" %>
-              <%= t '.rent' %>
+              <%= t '.rent' %> - <%=property.tipoProp%>
+              </span>
+              <br>
+              <span class="h6"><%=number_to_currency(property.precio,precision: 0, locale: :en)%>/mes</span>
+              <br>
             <%else%>
-              <%= t '.sale' %>
+              <%= t '.sale' %> - <%=property.tipoProp%>
+              </span>
+              <br>
+              <span class="h6"><%=number_to_currency(property.precio,precision: 0, locale: :en)%></span>
+              <br>
             <%end%>
-            - <%=property.tipoProp%>
-          </span>
-          <br>
-          <span class="h6"><%=number_to_currency(property.precio,precision: 0, locale: :en)%></span>
-          <br>
+
+
           <span class="h6 mt-1 text-uppercase">
             <%=property.zona%>
             - <%=property.colonia%>

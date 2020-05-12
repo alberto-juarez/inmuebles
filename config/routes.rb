@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :messages
+  get '/contacto' => 'static_pages#contacto'
+  get '/nosotros' => 'static_pages#nosotros'
   resources :duenos
   resources :prospectos
 
@@ -11,7 +14,6 @@ Rails.application.routes.draw do
   # get '*unmatched_route', to: 'application#render_not_found'
   get 'dashboard' => 'dashboard#index'
   get 'dashboard/properties'
-  get 'dashboard/reports'
   get 'dashboard/accounts'
   get 'dashboard/clients'
   get 'dashboard/newclient'

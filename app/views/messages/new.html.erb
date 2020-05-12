@@ -1,0 +1,7 @@
+<% if current_account.admin? %>
+<h1>Nuevo Mensaje</h1>
+
+<%= render 'form', message: @message %>
+
+<%= link_to 'Atras', messages_path %>
+<%end%>

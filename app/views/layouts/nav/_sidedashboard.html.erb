@@ -1,6 +1,17 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
   <div class="sidebar-sticky">
+    <div class="row mb-3">
+      <div class="col-12 text-center">
+        <%= image_tag('logo-negro.png',width:'120')%>
+      </div>
+    </div>
     <ul class="nav flex-column">
+      <li class="nav-item active">
+        <%= link_to root_path, class:"nav-link" do%>
+        <i class="fas fa-home"></i>
+        Pagina principal
+        <%end%>
+      </li>
       <%= render "layouts/nav/#{current_account.admin? ? 'admin' : 'user'}" if current_account %>
     </ul>
 
@@ -29,6 +40,12 @@
         <%=link_to edit_account_registration_path, class:"nav-link" do%>
           <i class="fas fa-cog"></i>
           Editar cuenta
+        <%end%>
+      </li>
+      <li class="nav-item">
+        <%= link_to destroy_account_session_path, method: :delete, class:"nav-link" do%>
+        <i class="fas fa-sign-out-alt"></i>
+        Cerrar sesión
         <%end%>
       </li>
     </ul>

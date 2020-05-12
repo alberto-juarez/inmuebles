@@ -1,4 +1,15 @@
 en:
+  layouts:
+    busqueda:
+      search: "search"
+    footer:
+      contact: "Contact"
+      social: "Social Networks"
+    nav:
+      public:
+        home: "Home"
+        us: "About us"
+        contact: "Contact us"
   properties:
     show:
       hello: "Hello world"
@@ -14,6 +25,8 @@ en:
       less-msg: "Read less"
       more: "More properties in"
       call: "CALL"
+      terrain: "Land"
+      construction: "Construction"
     ammenities:
       title: "Amenities"
       ac: "Air Conditioning"
@@ -28,6 +41,7 @@ en:
       terrace: "Terrace"
       security: "Private Neighborhood"
     agent_details:
+      contact: "Contact"
       call: "CALL"
     list:
       rent: "RENT"

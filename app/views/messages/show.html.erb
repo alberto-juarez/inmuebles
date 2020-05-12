@@ -1,0 +1,26 @@
+<% if current_account.admin? %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @message.titulo %>
+</p>
+
+<p>
+  <strong>Mensaje:</strong>
+  <%= @message.mensaje %>
+</p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @message.account_id %>
+</p>
+
+<p>
+  <strong>Visible:</strong>
+  <%= @message.visible %>
+</p>
+
+<%= link_to 'Editar', edit_message_path(@message) %> |
+<%= link_to 'Atras', messages_path %>
+<%end%>

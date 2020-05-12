@@ -1,4 +1,15 @@
 es:
+  layouts:
+    busqueda:
+      search: "buscar"
+    footer:
+      contact: "Contacto"
+      social: "Redes sociales"
+    nav:
+      public:
+        home: "Inicio"
+        us: "Nosotros"
+        contact: "Contacto"
   properties:
     show:
       hello: "Hello world"
@@ -14,6 +25,9 @@ es:
       less-msg: "Ver menos"
       more: "Más propiedades en"
       call: "LLAMAR"
+
+      terrain: "Terreno"
+      construction: "Construcción"
     ammenities:
       title: "Amenidades"
       ac: "Aire Acondicionado"
@@ -29,6 +43,7 @@ es:
       security: "Colonia Privada"
 
     agent_details:
+      contact: "Contacto"
       call: "LLAMAR"
     list:
       rent: "RENTA"
