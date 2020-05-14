@@ -1,24 +1,59 @@
-# README
+# Real Estate Agency
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Final project.
+Web Applications Development
 
-Things you may want to cover:
+# Technical info
+Database: SQLite
+Framework: Rails
+Sessions handler: Devise
 
-* Ruby version
+# Views
 
-* System dependencies
+The application has different types of views depending on its user.
 
-* Configuration
+## Public view
 
-* Database creation
+The public view can be accessed by the end users and it is used to showcase the properties of the real estate agency, which can be modified if you are a user or an admin. 
 
-* Database initialization
+The general public has access to:
 
-* How to run the test suite
+ - Home page
+ - Search page
+ - Properties page
+ - About us page
+ - Contact us page
 
-* Services (job queues, cache servers, search engines, etc.)
+## User view
 
-* Deployment instructions
+This type of view is intended for the realtors in the agency to upload their properties as well as to have better control of their clients. 
 
-* ...
+The normal user has access to all of the public views and:
+
+ - Admin panel
+ - Their current clients (CRUD)
+ - The listings that they manage (CRUD)
+ - The owners that they manage (CRUD)
+ - All the properties ( R )
+
+
+## Admin view
+
+This type of view is intended for the manager of the real estate agency.
+
+The admin user has access to all of the user views and:
+
+- All the properties (CRUD)
+- All of the owners that everyone manages (CRUD)
+- All of the clients that everyone has (CRUD)
+- All of the user and admin accounts (RUD)
+- The properties that appear on the homepage
+- The messages that appear on the admin panel (CRUD)
+
+# Team
+
+| Alberto Juarez | Rafael Serna |
+|--|--|
+| A0128913 | A01282298 |
+
+
