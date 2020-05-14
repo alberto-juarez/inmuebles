@@ -1,12 +1,14 @@
 # Real Estate Agency
 
-Final project.
-Web Applications Development
-
+ - Final project.
+ - Web Applications Development
+ - February - June 2020
+ - Lecturer: MSc Alfredo Salazar Vélez
+ 
 # Technical info
-Database: SQLite
-Framework: Rails
-Sessions handler: Devise
+ - Database: SQLite
+ - Framework: Rails
+ - Sessions handler: Devise
 
 # Views
 
