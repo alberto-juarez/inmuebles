@@ -13,6 +13,13 @@ es:
       service3: "Servicio 3"
   layouts:
     busqueda:
+      rent: "Renta"
+      sell: "Venta"
+      appartment: "Departamento"
+      house: "Casa"
+      terreno: "Terreno"
+      warehouse: "Bodega"
+      ofice: "Oficina"
       nbhd: "Colonia"
       zone: "Zona"
       type: "Tipo"
