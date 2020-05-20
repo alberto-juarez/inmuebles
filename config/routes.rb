@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :messages
-  get '/contacto' => 'static_pages#contacto'
-  get '/nosotros' => 'static_pages#nosotros'
+
   resources :duenos
   resources :prospectos
 
@@ -13,16 +12,15 @@ Rails.application.routes.draw do
   devise_for :accounts
   # get '*unmatched_route', to: 'application#render_not_found'
   get 'dashboard' => 'dashboard#index'
-  get 'dashboard/properties'
   get 'dashboard/accounts'
-  get 'dashboard/clients'
-  get 'dashboard/newclient'
   get "/profile/:id" => 'dashboard#profile', as: :profile
   patch "/featured" => "properties#update_multiple"
   get "/featured" => "properties#featured"
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :properties
+    get '/contacto' => 'static_pages#contacto'
+    get '/nosotros' => 'static_pages#nosotros'
     get "/accounts" => "admin#accounts", as: :accounts
     get "/search" => "properties#search"
     post "/agent/message" => "properties#email_agent", as: :email_agent

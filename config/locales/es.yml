@@ -1,6 +1,22 @@
 es:
+  public:
+    main:
+      title: "Bienes raíces"
+  static_pages:
+    nosotros:
+      title: "Qué hacemos"
+      description: "Combinando profundidad del conocimiento del mercado y muchos años de experiencia ofrecemos más que cualquier otra agencia inmobiliaria en la ciudad."
+      servicesTitle: "Nuestros servicios"
+      teamTitle: "Nuestro equipo"
+      service1: "Servicio 1"
+      service2: "Servicio 2"
+      service3: "Servicio 3"
   layouts:
     busqueda:
+      nbhd: "Colonia"
+      zone: "Zona"
+      type: "Tipo"
+      property: "Tipo de propiedad"
       search: "buscar"
     footer:
       contact: "Contacto"
@@ -12,6 +28,12 @@ es:
         contact: "Contacto"
   properties:
     show:
+      appartment: "Departamento"
+      house: "Casa"
+      terreno: "Terreno"
+      warehouse: "Bodega"
+      ofice: "Oficina"
+      month: "/mes"
       hello: "Hello world"
       bedrooms: "Recamaras"
       bathrooms: "Baños"
@@ -48,6 +70,12 @@ es:
     list:
       rent: "RENTA"
       sale: "VENTA"
+      appartment: "Departamento"
+      house: "Casa"
+      terreno: "Terreno"
+      warehouse: "Bodega"
+      ofice: "Oficina"
+      month: "/mes"
   admin:
     js:
       true: Cierto

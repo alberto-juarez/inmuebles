@@ -29,7 +29,6 @@
       </div>
     <%end%>
     <div id="notifications"><%= flash_notifications %></div>
-
   </body>
 
   <%if ["public"].include?(controller.controller_name) or ["static_pages"].include?(controller.controller_name) or (["properties"].include?(controller.controller_name) and ["show"].include?(controller.action_name))%>

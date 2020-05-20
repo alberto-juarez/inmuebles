@@ -9,13 +9,35 @@
         <div class="property-summary mb-2 p-3">
           <span class="h6 mb-1 text-uppercase">
             <%if property.tipoOp == "Renta" %>
-              <%= t '.rent' %> - <%=property.tipoProp%>
+              <%= t '.rent' %> -
+              <%if property.tipoProp == "Terreno"%>
+                <%= t '.terreno' %>
+              <%elsif property.tipoProp == "Bodega"%>
+                <%= t '.warehouse' %>
+              <%elsif property.tipoProp == "Casa"%>
+                <%= t '.house' %>
+              <%elsif property.tipoProp == "Departamento"%>
+                <%= t '.appartment' %>
+              <%elsif property.tipoProp == "Oficina"%>
+                <%= t '.ofice' %>
+              <%end%>
               </span>
               <br>
-              <span class="h6"><%=number_to_currency(property.precio,precision: 0, locale: :en)%>/mes</span>
+              <span class="h6"><%=number_to_currency(property.precio,precision: 0, locale: :en)%><%=t '.month'%></span>
               <br>
             <%else%>
-              <%= t '.sale' %> - <%=property.tipoProp%>
+              <%= t '.sale' %> -
+              <%if property.tipoProp == "Terreno"%>
+                <%= t '.terreno' %>
+              <%elsif property.tipoProp == "Bodega"%>
+                <%= t '.warehouse' %>
+              <%elsif property.tipoProp == "Casa"%>
+                <%= t '.house' %>
+              <%elsif property.tipoProp == "Departamento"%>
+                <%= t '.appartment' %>
+              <%elsif property.tipoProp == "Oficina"%>
+                <%= t '.ofice' %>
+              <%end%>
               </span>
               <br>
               <span class="h6"><%=number_to_currency(property.precio,precision: 0, locale: :en)%></span>

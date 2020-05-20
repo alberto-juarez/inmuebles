@@ -36,8 +36,20 @@
       <div class="col-8">
         <div class="row">
           <div class="col-sm-6">
-            <p class="h5 mb-0 text-uppercase"><%=@property.tipoProp%></p>
-            <p class="h2"><%= number_to_currency(@property.precio, precision: 0, locale: :en) %><%="/mes" if @property.tipoOp == "Renta" %></p>
+            <p class="h5 mb-0 text-uppercase">
+              <%if @property.tipoProp == "Terreno"%>
+                <%= t '.terreno' %>
+              <%elsif @property.tipoProp == "Bodega"%>
+                <%= t '.warehouse' %>
+              <%elsif @property.tipoProp == "Casa"%>
+                <%= t '.house' %>
+              <%elsif @property.tipoProp == "Departamento"%>
+                <%= t '.appartment' %>
+              <%elsif @property.tipoProp == "Oficina"%>
+                <%= t '.ofice' %>
+              <%end%>
+            </p>
+            <p class="h2"><%= number_to_currency(@property.precio, precision: 0, locale: :en) %><%=t '.month' if @property.tipoOp == "Renta" %></p>
             <p class="h5 mt-0">
               <%if @property.tipoOp == "Venta"%>
                 <%= t '.sale' %>

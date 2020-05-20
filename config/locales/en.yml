@@ -1,6 +1,29 @@
 en:
+  public:
+    main:
+      title: "Real Estate"
+  static_pages:
+    nosotros:
+      title: "What do we do"
+      description: "Combining in depth market knowledge and many years of experience we offer more than any other real estate agency on the city."
+      servicesTitle: "Our services"
+      teamTitle: "Our team"
+      service1: "Service 1"
+      service2: "Service 2"
+      service3: "Service 3"
   layouts:
     busqueda:
+      rent: "Rent"
+      sell: "Buy"
+      appartment: "Appartment"
+      house: "House"
+      terreno: "Land"
+      warehouse: "Warehouse"
+      ofice: "Office"
+      nbhd: "Neighborhood"
+      zone: "Zone"
+      type: "Type"
+      property: "Type of property"
       search: "search"
     footer:
       contact: "Contact"
@@ -12,6 +35,12 @@ en:
         contact: "Contact us"
   properties:
     show:
+      appartment: "Appartment"
+      house: "House"
+      terreno: "Land"
+      warehouse: "Warehouse"
+      ofice: "Office"
+      month: "/month"
       hello: "Hello world"
       bedrooms: "Bedrooms"
       bathrooms: "Bathrooms"
@@ -46,3 +75,9 @@ en:
     list:
       rent: "RENT"
       sale: "SALE"
+      appartment: "Appartment"
+      house: "House"
+      terreno: "Land"
+      warehouse: "Warehouse"
+      ofice: "Oficina"
+      month: "/month"

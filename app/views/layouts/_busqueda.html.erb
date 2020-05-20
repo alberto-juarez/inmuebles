@@ -1,19 +1,19 @@
 <%= form_tag("/search", method: "get") do %>
   <div class="row">
     <div class="col-3">
-      <%= label_tag(:tipoOp, "Tipo:") %>
-      <%= select_tag(:tipoOp, options_for_select([ "Venta", "Renta" ], "Renta"), {:class => 'form-control'}) %>
+      <%= label_tag(t('.type'))%>
+      <%= select_tag(:tipoOp, options_for_select([ t('.rent'), t('.sell') ], t('.rent')), {:class => 'form-control'}) %>
     </div>
     <div class="col-3">
-      <%= label_tag(:tipoProp, "Tipo:") %>
-      <%= select_tag(:tipoProp, options_for_select([ "Departamento", "Casa" ], "Casa"), {:class => 'form-control'}) %>
+      <%= label_tag(t('.property'))%>
+      <%= select_tag(:tipoProp, options_for_select([ t('.appartment'), t('.house'),t('.terreno'),t('.warehouse'),t('.office') ], t('.house')), {:class => 'form-control'}) %>
     </div>
     <div class="col-3">
-      <%= label_tag(:zona, "Zona:") %>
+      <%= label_tag(t('.zone'))%>
       <%=  select_tag(:zona, options_for_select([ "Norte", "Sur" ], "Sur"), {:class => 'form-control'}) %>
     </div>
     <div class="col-3">
-      <%= label_tag(:colonia, "Colonia:") %>
+      <%= label_tag(t('.nbhd'))%>
       <%= select_tag(:colonia, options_for_select([ "Hola", "Contry" ], "Hola"), {:class => 'form-control'}) %>
     </div>
   </div>
