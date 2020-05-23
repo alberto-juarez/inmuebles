@@ -1,6 +1,9 @@
 en:
   public:
     main:
+      favorites: "Favorites"
+      noprops: "Add properties to your favorites to keep track of them."
+      login: "Please log in to keep track of your favorite properties."
       title: "Real Estate"
   static_pages:
     nosotros:
@@ -81,3 +84,18 @@ en:
       warehouse: "Warehouse"
       ofice: "Oficina"
       month: "/month"
+    list2:
+      remover: "Remove from favorites"
+      rent: "RENT"
+      sale: "SALE"
+      appartment: "Appartment"
+      house: "House"
+      terreno: "Land"
+      warehouse: "Warehouse"
+      ofice: "Oficina"
+      month: "/month"
+    favortie:
+      title: "Like it?"
+      agregar: "Add to favorites"
+      remover: "Remove from favorites"
+      signin: "Log in"

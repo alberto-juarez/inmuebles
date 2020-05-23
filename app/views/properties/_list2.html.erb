@@ -1,26 +1,56 @@
-<% properties.each_slice(3) do |props|%>
-  <div class="card-deck">
-    <% props.each do |property|%>
-      <div class="card">
-        <%= image_tag property.cover_picture, class:"card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title"><%=number_to_currency(property.precio,precision: 0, locale: :en)%></h5>
-          <p class="card-text text-uppercase">
+<% properties.each do |property|%>
+  <div class="col-4 mb-3">
+    <div class="property border">
+
+        <div class="property-thumb" style="background-image:url('<%=rails_blob_url(property.cover_picture)%>')">
+          <%= link_to "", property_path(property)%>
+        </div>
+
+        <div class="property-summary mb-2 p-3">
+          <span class="h6 mb-1 text-uppercase">
             <%if property.tipoOp == "Renta" %>
-              <%= t '.rent' %>
+              <%= t '.rent' %> -
+              <%if property.tipoProp == "Terreno"%>
+                <%= t '.terreno' %>
+              <%elsif property.tipoProp == "Bodega"%>
+                <%= t '.warehouse' %>
+              <%elsif property.tipoProp == "Casa"%>
+                <%= t '.house' %>
+              <%elsif property.tipoProp == "Departamento"%>
+                <%= t '.appartment' %>
+              <%elsif property.tipoProp == "Oficina"%>
+                <%= t '.ofice' %>
+              <%end%>
+              </span>
+              <br>
+              <span class="h6"><%=number_to_currency(property.precio,precision: 0, locale: :en)%><%=t '.month'%></span>
+              <br>
             <%else%>
-              <%= t '.sale' %>
+              <%= t '.sale' %> -
+              <%if property.tipoProp == "Terreno"%>
+                <%= t '.terreno' %>
+              <%elsif property.tipoProp == "Bodega"%>
+                <%= t '.warehouse' %>
+              <%elsif property.tipoProp == "Casa"%>
+                <%= t '.house' %>
+              <%elsif property.tipoProp == "Departamento"%>
+                <%= t '.appartment' %>
+              <%elsif property.tipoProp == "Oficina"%>
+                <%= t '.ofice' %>
+              <%end%>
+              </span>
+              <br>
+              <span class="h6"><%=number_to_currency(property.precio,precision: 0, locale: :en)%></span>
+              <br>
             <%end%>
-            - <%=property.tipoProp%>
-            <br>
+
+
+          <span class="h6 mt-1 text-uppercase">
             <%=property.zona%>
             - <%=property.colonia%>
-          </p>
+          </span>
+          <%= link_to t('.remover'),toggle_fav_path(id: property.id), remote: true, method: :post,class:"btn btn-block btn-success text-uppercase mt-2",id:property.id%>
         </div>
-        <div class="card-footer">
-          <small >Last updated 3 mins ago</small>
-        </div>
-      </div>
-    <%end%>
+    </div>
   </div>
 <%end%>

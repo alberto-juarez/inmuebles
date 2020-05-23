@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_215213) do
+ActiveRecord::Schema.define(version: 2020_05_23_214352) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name", default: "", null: false
@@ -93,12 +93,39 @@ ActiveRecord::Schema.define(version: 2020_05_06_215213) do
     t.index ["property_id"], name: "index_duenos_on_property_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.string "favoritable_type", null: false
+    t.integer "favoritable_id", null: false
+    t.string "favoritor_type", null: false
+    t.integer "favoritor_id", null: false
+    t.string "scope", default: "favorite", null: false
+    t.boolean "blocked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blocked"], name: "index_favorites_on_blocked"
+    t.index ["favoritable_id", "favoritable_type"], name: "fk_favoritables"
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable_type_and_favoritable_id"
+    t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
+    t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor_type_and_favoritor_id"
+    t.index ["scope"], name: "index_favorites_on_scope"
+  end
+
   create_table "featureds", force: :cascade do |t|
     t.boolean "show"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "property_id"
     t.index ["property_id"], name: "index_featureds_on_property_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "titulo"
+    t.string "mensaje"
+    t.integer "account_id", null: false
+    t.boolean "visible"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_messages_on_account_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -134,8 +161,10 @@ ActiveRecord::Schema.define(version: 2020_05_06_215213) do
     t.decimal "comision"
     t.boolean "featured", default: false
     t.integer "duenos_id"
+    t.integer "usertemps_id"
     t.index ["account_id"], name: "index_properties_on_account_id"
     t.index ["duenos_id"], name: "index_properties_on_duenos_id"
+    t.index ["usertemps_id"], name: "index_properties_on_usertemps_id"
   end
 
   create_table "prospectos", force: :cascade do |t|
@@ -152,6 +181,22 @@ ActiveRecord::Schema.define(version: 2020_05_06_215213) do
     t.index ["account_id"], name: "index_prospectos_on_account_id"
   end
 
+  create_table "usertemps", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "properties_id"
+    t.index ["email"], name: "index_usertemps_on_email", unique: true
+    t.index ["properties_id"], name: "index_usertemps_on_properties_id"
+    t.index ["reset_password_token"], name: "index_usertemps_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "messages", "accounts"
+  add_foreign_key "properties", "usertemps", column: "usertemps_id"
   add_foreign_key "prospectos", "accounts"
 end

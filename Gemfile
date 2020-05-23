@@ -21,6 +21,7 @@ gem 'devise'
 gem 'toastr-rails'
 gem 'rails-i18n'
 gem 'social-share-button'
+gem 'acts_as_favoritor'
 
 
 # Use Redis adapter to run Action Cable in production

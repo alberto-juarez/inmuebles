@@ -1,0 +1,4 @@
+var agregar = "<%=I18n.t('properties.favortie.agregar') %>";
+var remover = "<%=I18n.t('properties.favortie.remover') %>";
+var txt = ($('#<%=@property.id%>').text() == remover) ? agregar : remover;
+$("#<%=@property.id%>").text(txt);

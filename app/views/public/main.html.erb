@@ -19,3 +19,23 @@
       </div>
     </div>
   </section>
+
+  <section id="favorite-properties">
+    <div class="container mt-5">
+      <div class="text-center">
+        <h1><%= t('.favorites') %></h1>
+        <%if usertemp_signed_in?%>
+          <% if current_usertemp.favorited_by_type('Property').count == 0%>
+            <p class="lead text-muted"><%= t('.noprops') %></p>
+          <%else %>
+            <div class="row text-left">
+              <%= render "properties/list2",properties: current_usertemp.favorited_by_type('Property') %>
+            </div>
+          <%end%>
+        <%else%>
+        <p class="lead text-muted"><%= t('.login') %></p>
+        <%= link_to "sign in", new_usertemp_session_path, class:"btn btn-block btn-success text-uppercase" %>
+        <%end%>
+      </div>
+    </div>
+  </section>

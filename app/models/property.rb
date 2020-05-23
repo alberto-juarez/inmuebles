@@ -1,4 +1,5 @@
 class Property < ApplicationRecord
+  acts_as_favoritable
   belongs_to :account
   has_one :dueno
   has_rich_text :descripcion

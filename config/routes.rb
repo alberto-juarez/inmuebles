@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  get 'favorites/update'
+  devise_for :usertemps
   resources :messages
 
   resources :duenos
   resources :prospectos
-
+  post 'toggle_fav', to: "properties#toggle_fav"
   get 'pdf/:id' => "properties#showpdf"
+  get "addfav" => 'properties#addfav'
   get "misprospectos/:id" => 'prospectos#misprospectos', as: :misprospectos
   get "misduenos/:id" => 'duenos#misduenos', as: :misduenos
   get 'client/new'
@@ -16,7 +19,6 @@ Rails.application.routes.draw do
   get "/profile/:id" => 'dashboard#profile', as: :profile
   patch "/featured" => "properties#update_multiple"
   get "/featured" => "properties#featured"
-
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :properties
     get '/contacto' => 'static_pages#contacto'

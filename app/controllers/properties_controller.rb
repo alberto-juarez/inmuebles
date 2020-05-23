@@ -6,6 +6,11 @@ class PropertiesController < ApplicationController
   before_action :set_none, only: [:showpdf]
   # GET /properties
   # GET /properties.json
+  def toggle_fav
+    @property = Property.find(params[:id])
+    current_usertemp.favorited?(@property)  ? current_usertemp.unfavorite(@property) : current_usertemp.favorite(@property)
+  end
+
   def index
     @featured = Property.where(featured: true)
     @asesores = Account.all.pluck(:first_name)
