@@ -38,6 +38,7 @@ en:
         contact: "Contact us"
   properties:
     show:
+      noprops: "At the moment we don't have more properties in this zone."
       appartment: "Appartment"
       house: "House"
       terreno: "Land"

@@ -130,11 +130,15 @@
 
     <div class="row">
       <span class="h2 ml-3">
-        <%= t '.more' %> <%= @property.zona %>
+        <%if @count == 0 %>
+          <%= t '.noprops' %>
+        <%else%>
+          <%= t '.more' %> <%= @property.zona %>
+        <%end%>
       </span>
     </div>
-    <div class="row">
-      <%= render "properties/list", properties: @neighbourhood %>
+    <div class="row mt-2">
+        <%= render "properties/list", properties: @neighbourhood %>
     </div>
 
   </div>

@@ -51,6 +51,7 @@ class PropertiesController < ApplicationController
   # GET /properties/1.json
   def show
     @agent = @property.account
+    @count = Property.where(zona: @property.zona).where.not(id: @property).count
     @neighbourhood = Property.where(zona: @property.zona).where.not(id: @property).limit(3)
   end
 

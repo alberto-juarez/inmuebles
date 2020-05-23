@@ -38,6 +38,7 @@ es:
         contact: "Contacto"
   properties:
     show:
+      noprops: "Por el momento no contamos con más propiedades en esta zona."
       appartment: "Departamento"
       house: "Casa"
       terreno: "Terreno"
