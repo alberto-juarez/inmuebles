@@ -22,8 +22,6 @@ gem 'toastr-rails'
 gem 'rails-i18n'
 gem 'social-share-button'
 gem 'acts_as_favoritor'
-gem 'aws-sdk', '~> 2'
-
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
