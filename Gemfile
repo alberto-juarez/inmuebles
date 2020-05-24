@@ -22,7 +22,7 @@ gem 'toastr-rails'
 gem 'rails-i18n'
 gem 'social-share-button'
 gem 'acts_as_favoritor'
-
+gem "aws-sdk-s3", require: false
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
