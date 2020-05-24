@@ -14,6 +14,6 @@ class AddAmenitiesToProperty < ActiveRecord::Migration[6.0]
     add_column :properties, :pool, :boolean
     add_column :properties, :terrace, :boolean
     add_column :properties, :security, :boolean
-    add_column :properties, :comision, :number
+    add_column :properties, :comision, :integer
   end
 end
