@@ -1,17 +1,17 @@
 
 # Real Estate Agency
 
-Final project.
-Web Applications Development
-Live demo: https://finalweb.herokuapp.com/
+- Final project.
+- Web Applications Development
+- Live demo: https://finalweb.herokuapp.com/
 | Alberto Juarez | Rafael Serna |
 |--|--|
 | A0128913 | A01282298 |
 ## README Index
-[Technical info](#technical-info)
-[Views](#views)
-[Endpoints](#endpoints)
-[Local installation](#local-installation)
+- [Technical info](#technical-info)
+- [Views](#views)
+- [Endpoints](#endpoints)
+- [Local installation](#local-installation)
 # Technical info
 **Database:** PostgreSQL
 **Framework:** Rails
