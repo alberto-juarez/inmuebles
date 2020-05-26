@@ -14,14 +14,14 @@
 - [Endpoints](#endpoints)
 - [Local installation](#local-installation)
 # Technical info
-**Database:** PostgreSQL
-**Framework:** Rails
-**Sessions handler:** Devise
-**Image handler:** Active Storage
+- **Database:** PostgreSQL
+- **Framework:** Rails
+- **Sessions handler:** Devise
+- **Image handler:** Active Storage
 
-**Database server:** Heroku Postgres
-**Image storage/server:** Amazon Simple Storage Service (S3)
-**Cloud platform/server:** Heroku
+- **Database server:** Heroku Postgres
+- **Image storage/server:** Amazon Simple Storage Service (S3)
+- **Cloud platform/server:** Heroku
 
 
 # Views
