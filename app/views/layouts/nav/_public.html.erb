@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-md fixed-top bg-white">
-    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fas fa-bars"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <%= link_to t('.home'), root_path, class:"nav-link text-dark text-uppercase font-weight-bold" %>
@@ -23,6 +27,18 @@
           </li>
           <%end%>
         </ul>
+        <ul class="navbar-nav d-md-none ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="flag-icon flag-icon-mx"> </span>
+              <span class="flag-icon flag-icon-us"> </span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "English", { :locale=>'en' }, class:"dropdown-item text-dark text-uppercase font-weight-bold" %>
+              <%= link_to("Español", { :locale=>'es' }, class:"dropdown-item text-dark text-uppercase font-weight-bold") %>
+            </div>
+          </li>
+        </ul>
     </div>
     <div class="mx-auto order-0">
         <a class="navbar-brand mx-auto" href="/">
@@ -32,7 +48,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 dropleft">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-dark text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

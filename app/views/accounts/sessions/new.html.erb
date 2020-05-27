@@ -33,6 +33,9 @@
 
                 <div class="actions">
                   <%= f.submit "Log in", class: "btn btn-success btn-lg btn-block" %>
+                  <% if flash[:alert] %>
+                    <p class="alert" style="color: red;">Wrong Username or Password</p>
+                  <% end %>
                 </div>
               <% end %>
             </div>

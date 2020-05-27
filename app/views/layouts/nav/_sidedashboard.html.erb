@@ -36,12 +36,14 @@
       <span>Cuenta</span>
     </h6>
     <ul class="nav flex-column mb-2">
+      <% if false %>
       <li class="nav-item">
         <%=link_to edit_account_registration_path, class:"nav-link" do%>
           <i class="fas fa-cog"></i>
           Editar cuenta
         <%end%>
       </li>
+      <%end%>
       <li class="nav-item">
         <%= link_to destroy_account_session_path, method: :delete, class:"nav-link" do%>
         <i class="fas fa-sign-out-alt"></i>

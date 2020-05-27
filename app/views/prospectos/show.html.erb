@@ -7,7 +7,7 @@
         <strong>Nombre:</strong>
       </div>
       <div class="row">
-        <%= @prospecto.first_name %><%= @prospecto.last_name %>
+        <%= @prospecto.first_name %> <%= @prospecto.last_name %>
       </div>
     </div>
     <div class="col-4">
@@ -105,5 +105,6 @@
     </div>
 </div>
 
-
+<br>
+<%= link_to 'Back', prospectos_path, class:"btn btn-danger" %>
 <%end%>

@@ -1,0 +1,227 @@
+<%= form_with(model: property, local: true) do |form| %>
+
+  <%= render "layouts/validation",item: @property%>
+  <div class="row">
+    <h4 class="h4">Información Básica</h4>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="form-group">
+        <%= form.label :id %>
+        <%= form.text_field :id,class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <%= form.label :tipo_propiedad %>
+        <%= form.select :tipoProp, options_for_select(["Departamento","Casa","Terreno","Bodega","Oficina"]), { prompt: "Selecciona" },class:"form-control" %>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <%= form.label :tipo_operacion %>
+        <%= form.select :tipoOp, options_for_select(["Venta","Renta"]), { prompt: "Selecciona" },class:"form-control" %>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <%= form.label :zona %>
+        <%= form.text_field :zona,class: "form-control" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="form-group">
+        <%= form.label :colonia %>
+        <%= form.text_field :colonia,class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <%= form.label :precio %>
+        <%= form.number_field :precio,class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <%= form.label :mConst %>
+        <%= form.number_field :mConst,class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <%= form.label :mTerreno %>
+        <%= form.number_field :mTerreno,class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-3">
+    <div class="form-group">
+      <%= form.label :baños %>
+      <%= form.select :banos, options_for_select((0..15).step(0.5)), { prompt: "Selecciona" },class:"form-control" %>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="form-group">
+      <%= form.label :recamaras %>
+      <%= form.select :recamaras, options_for_select(0..15), { prompt: "Selecciona" },class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="form-group">
+      <%= form.label :comision %>
+      <%= form.select :comision, options_for_select((2..6).step(0.5)), { prompt: "Selecciona" },class:"form-control" %>
+    </div>
+  </div>
+  <div class="col-3">
+    <%if current_account.admin?%>
+    <div class="form-group">
+      <%= form.label :asesor %>
+      <%= form.select :account_id, options_for_select(@asesores), { prompt: "Selecciona" },class:"form-control" %>
+    </div>
+    <%else%>
+    <%= form.hidden_field :account_id, :value => current_account.id %>
+    <%end%>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="form-group">
+        <%= form.label :dueños %>
+        <%= form.select :duenos_id, options_for_select(@duenos), { prompt: "Selecciona" },class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :descripcion %>
+    <%= form.rich_text_area :descripcion %>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :foto_principal %>
+        <div class="custom-file">
+          <%= form.file_field :cover_picture,class: "custom-file-input" %>
+          <label class="custom-file-label" for="inputGroupFile01">Escoge el archivo</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :fotos_secundarias %>
+        <div class="custom-file">
+          <%= form.file_field :pictures, multiple: true,class: "custom-file-input" %>
+          <label class="custom-file-label" for="inputGroupFile01">Escoge el archivo</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h4 class="h4">Amenidades</h4>
+  </div>
+  <div class="row mb-2">
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :ac,class: "form-check-input" %>
+        <label class="form-check-label">
+          Aire Acondicionado
+        </label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :alarm,class: "form-check-input" %>
+        <label class="form-check-label">
+          Alarma
+        </label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :lift,class: "form-check-input" %>
+        <label class="form-check-label">
+          Elevador
+        </label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :balcony,class: "form-check-input" %>
+        <label class="form-check-label">
+          Balcon
+        </label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :furnished,class: "form-check-input" %>
+        <label class="form-check-label">
+          Amueblado
+        </label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :bbq,class: "form-check-input" %>
+        <label class="form-check-label">
+          Asador
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :fireplace,class: "form-check-input" %>
+        <label class="form-check-label">
+          Chimenea
+        </label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :backyard,class: "form-check-input" %>
+        <label class="form-check-label">
+          Patio
+        </label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :pool,class: "form-check-input" %>
+        <label class="form-check-label">
+          Alberca
+        </label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :terrace,class: "form-check-input" %>
+        <label class="form-check-label">
+          Terraza
+        </label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="form-check">
+        <%= form.check_box :security,class: "form-check-input" %>
+        <label class="form-check-label">
+          Colonia Privada
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Guardar propiedad",class: "btn btn-success" %>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@
           <%= link_to "", property_path(property)%>
         </div>
 
-        <div class="property-summary mb-2 p-3">
+        <div class="property-summary mb-2 p-3 text-truncate">
           <span class="h6 mb-1 text-uppercase">
             <%if property.tipoOp == "Renta" %>
               <%= t '.rent' %> -
@@ -47,7 +47,10 @@
 
           <span class="h6 mt-1 text-uppercase">
             <%=property.zona%>
-            - <%=property.colonia%>
+          </span>
+          <br>
+          <span class="h6 mt-1 text-uppercase">
+            <%=property.colonia%>
           </span>
 
         </div>
