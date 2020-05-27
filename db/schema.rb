@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_05_23_214352) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "accounts", force: :cascade do |t|
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
@@ -26,10 +29,6 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
@@ -41,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
     t.string "name", null: false
     t.text "body"
     t.string "record_type", null: false
-    t.integer "record_id", null: false
+    t.bigint "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
@@ -50,8 +49,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -74,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
     t.string "cel"
     t.string "email"
     t.string "comments"
-    t.integer "account_id"
+    t.bigint "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_clients_on_account_id"
@@ -87,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
     t.string "tel"
     t.string "cel"
     t.string "comments"
-    t.integer "property_id", null: false
+    t.bigint "property_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["property_id"], name: "index_duenos_on_property_id"
@@ -95,9 +94,9 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
 
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
-    t.integer "favoritable_id", null: false
+    t.bigint "favoritable_id", null: false
     t.string "favoritor_type", null: false
-    t.integer "favoritor_id", null: false
+    t.bigint "favoritor_id", null: false
     t.string "scope", default: "favorite", null: false
     t.boolean "blocked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -110,18 +109,10 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
-  create_table "featureds", force: :cascade do |t|
-    t.boolean "show"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "property_id"
-    t.index ["property_id"], name: "index_featureds_on_property_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.string "titulo"
     t.string "mensaje"
-    t.integer "account_id", null: false
+    t.bigint "account_id", null: false
     t.boolean "visible"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -129,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.integer "account_id"
+    t.bigint "account_id"
     t.string "idprop"
     t.string "zona"
     t.string "colonia"
@@ -158,10 +149,10 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
     t.boolean "pool"
     t.boolean "terrace"
     t.boolean "security"
-    t.decimal "comision"
+    t.integer "comision"
     t.boolean "featured", default: false
-    t.integer "duenos_id"
-    t.integer "usertemps_id"
+    t.bigint "duenos_id"
+    t.bigint "usertemps_id"
     t.index ["account_id"], name: "index_properties_on_account_id"
     t.index ["duenos_id"], name: "index_properties_on_duenos_id"
     t.index ["usertemps_id"], name: "index_properties_on_usertemps_id"
@@ -177,7 +168,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "account_id"
+    t.bigint "account_id"
     t.index ["account_id"], name: "index_prospectos_on_account_id"
   end
 
@@ -189,7 +180,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_214352) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "properties_id"
+    t.bigint "properties_id"
     t.index ["email"], name: "index_usertemps_on_email", unique: true
     t.index ["properties_id"], name: "index_usertemps_on_properties_id"
     t.index ["reset_password_token"], name: "index_usertemps_on_reset_password_token", unique: true
