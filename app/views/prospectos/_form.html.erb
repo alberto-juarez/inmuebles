@@ -12,25 +12,25 @@
   <% end %>
 
   <div class="row">
-    <div class="col-3">
+    <div class="col-6 col-md-3">
       <div class="form-group">
         <%= form.label :nombre %>
         <%= form.text_field :first_name,class: "form-control" %>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-6 col-md-3">
       <div class="form-group">
         <%= form.label :apellido %>
         <%= form.text_field :last_name,class: "form-control" %>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-6 col-md-3">
       <div class="form-group">
         <%= form.label :email %>
         <%= form.text_field :email,class: "form-control" %>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-6 col-md-3">
       <div class="form-group">
         <%= form.label :tel %>
         <%= form.text_field :tel,class: "form-control" %>
@@ -38,13 +38,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-4">
+    <div class="col-6 col-md-3">
       <div class="form-group">
         <%= form.label :status %>
         <%= form.select :status, options_for_select(["Estatus 1","Estatus 2","Estatus 3","Estatus 4","Estatus 2"]), { prompt: "Selecciona" },class:"form-control" %>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-6 col-md-3">
       <%if current_account.admin?%>
       <div class="form-group">
         <%= form.label :asesor %>
@@ -58,13 +58,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
       <div class="form-group">
         <%= form.label :comentario_status %>
         <%= form.rich_text_area :statuscomment %>
       </div>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
       <div class="form-group">
         <%= form.label :comentario_prospecto %>
         <%= form.rich_text_area :comment %>

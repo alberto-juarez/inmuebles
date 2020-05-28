@@ -1,3 +1,64 @@
+<nav class="d-md-none navbar fixed-top bg-white">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fas fa-bars"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarSupportedContent">
+       <div class="row mb-3">
+      <div class="col-12 text-center">
+        <%= image_tag('logo-negro.png',width:'120')%>
+      </div>
+    </div>
+    <ul class="nav flex-column">
+      <li class="nav-item active">
+        <%= link_to root_path, class:"nav-link" do%>
+        <i class="fas fa-home"></i>
+        Pagina principal
+        <%end%>
+      </li>
+      <%= render "layouts/nav/#{current_account.admin? ? 'admin' : 'user'}" if current_account %>
+    </ul>
+
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Propiedades</span>
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <%=link_to properties_path, class:"nav-link" do%>
+          <i class="fas fa-home"></i>
+          Todas
+        <%end%>
+      </li>
+      <li class="nav-item">
+        <%=link_to profile_path(current_account), class:"nav-link" do%>
+          <i class="fas fa-home"></i>
+          Mis Propiedades
+        <%end%>
+      </li>
+    </ul>
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Cuenta</span>
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <% if false %>
+      <li class="nav-item">
+        <%=link_to edit_account_registration_path, class:"nav-link" do%>
+          <i class="fas fa-cog"></i>
+          Editar cuenta
+        <%end%>
+      </li>
+      <%end%>
+      <li class="nav-item">
+        <%= link_to destroy_account_session_path, method: :delete, class:"nav-link" do%>
+        <i class="fas fa-sign-out-alt"></i>
+        Cerrar sesión
+        <%end%>
+      </li>
+    </ul>
+    </div>
+</nav>
+
+
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
   <div class="sidebar-sticky">
     <div class="row mb-3">
