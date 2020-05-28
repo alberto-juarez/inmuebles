@@ -16,5 +16,5 @@
 }
 
 .imagen {
-  background-image: url('/assets/fondo.jpg')
+  background-image: asset-data-url("fondo.jpg");
 }
